@@ -1,11 +1,9 @@
 package com.example.background_task;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,97 +11,55 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private LinearLayout namajLayout;
     private SharedPreferences namajPreferences;
-    private static final int NUMBER_OF_CARDS = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        namajLayout = findViewById(R.id.namajLayout);
         namajPreferences = getSharedPreferences("NamajPreferences", MODE_PRIVATE);
 
-        // Retrieve data and dynamically create cards
-        for (int i = 1; i <= NUMBER_OF_CARDS; i++) {
-            addCard(i);
-        }
-
-        // Add the "Edit Namaj Time" button
-        Button editNamajButton = findViewById(R.id.editNamajButton);
-        editNamajButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onEditNamajButtonClick(v);
-            }
-        });
+        displayNamajCards();
     }
 
-    private void addCard(int cardNumber) {
+    private void displayNamajCards() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        View cardView = inflater.inflate(R.layout.card_layouts, null);
 
-        String keyStartTime = "startTime_" + cardNumber;
-        String keyFinishTime = "finishTime_" + cardNumber;
+        // List of namaj titles
+        String[] namajTitles = {"Fajr", "Dhuhr", "Asr", "Maghrib", "Isha", "Jummah"};
 
-        TextView startTimeTextView = cardView.findViewById(R.id.startTimeTextView);
-        TextView finishTimeTextView = cardView.findViewById(R.id.finishTimeTextView);
+        for (String namajTitle : namajTitles) {
+            String startTimeKey = "startTime_" + namajTitle;
+            String finishTimeKey = "finishTime_" + namajTitle;
 
-        String startTime = namajPreferences.getString(keyStartTime, "");
-        String finishTime = namajPreferences.getString(keyFinishTime, "");
+            // Check if namaj data is available in SharedPreferences
+            if (!namajPreferences.getString(startTimeKey,"").isEmpty() && !namajPreferences.getString(finishTimeKey,"").isEmpty()) {
+                String startTime = namajPreferences.getString(startTimeKey, "");
+                String finishTime = namajPreferences.getString(finishTimeKey, "");
+                // Inflate the namaj card layout
+                View namajCard = inflater.inflate(R.layout.card_layouts, namajLayout, false);
 
-        startTimeTextView.setText(startTime);
-        finishTimeTextView.setText("-   " + finishTime);
+                // Set namaj title
+                TextView titleTextView = namajCard.findViewById(R.id.titleTextView);
+                titleTextView.setText(namajTitle);
 
-        // Set fixed namaj titles based on cardNumber
-        setFixedNamajTitle(cardView, cardNumber);
+                // Set start time
+                TextView startTimeTextView = namajCard.findViewById(R.id.startTimeTextView);
+                startTimeTextView.setText("Start Time: " + startTime);
 
-        // Add the card to the LinearLayout
-        LinearLayout container = findViewById(R.id.container);
+                // Set finish time
+                TextView finishTimeTextView = namajCard.findViewById(R.id.finishTimeTextView);
+                finishTimeTextView.setText("Finish Time: " + finishTime);
 
-        // Set layout parameters with margins for the card
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        int marginInDp = getResources().getDimensionPixelSize(R.dimen.card_margin); // Adjust the margin as needed
-        layoutParams.setMargins(0, 0, 0, marginInDp);
+                // Add the namaj card to the layout
+                namajLayout.addView(namajCard);
+                namajLayout.setVisibility(View.VISIBLE);
 
-        cardView.setLayoutParams(layoutParams);
+            }
 
-        container.addView(cardView);
-    }
-
-    private void setFixedNamajTitle(View cardView, int cardNumber) {
-        TextView titleTextView = cardView.findViewById(R.id.titleTextView);
-
-        switch (cardNumber) {
-            case 1:
-                titleTextView.setText("FAJR");
-                break;
-            case 2:
-                titleTextView.setText("DHUHR ");
-                break;
-            case 3:
-                titleTextView.setText("ASR");
-                break;
-            case 4:
-                titleTextView.setText("MAGRIB");
-                break;
-            case 5:
-                titleTextView.setText("ISHA");
-                break;
-            case 6:
-                titleTextView.setText("JUMMAH");
-                break;
-            default:
-                titleTextView.setText("");
-                break;
         }
-    }
-
-    public void onEditNamajButtonClick(View view) {
-        // Handle button click, navigate to EditNamajActivity
-        Intent intent = new Intent(this, EditNamajActivity.class);
-        startActivity(intent);
     }
 }

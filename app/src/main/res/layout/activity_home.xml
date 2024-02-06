@@ -32,10 +32,11 @@
             >
 
             <LinearLayout
-                android:id="@+id/container"
+                android:id="@+id/namajLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:visibility="invisible"
                 android:orientation="vertical">
                 <!-- Cards will be dynamically added here -->
             </LinearLayout>

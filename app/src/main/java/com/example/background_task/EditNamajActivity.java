@@ -3,7 +3,6 @@ package com.example.background_task;
 import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -21,17 +18,48 @@ public class EditNamajActivity extends AppCompatActivity {
 
     private SharedPreferences namajPreferences;
     private static final int NUMBER_OF_CARDS = 6;
-
+    private String fajrTitle, dhuhrTitle, asrTitle, maghribTitle, ishaTitle, jummahTitle;
+    private String fajrStartTime, fajrFinishTime, dhuhrStartTime, dhuhrFinishTime,
+            asrStartTime, asrFinishTime, maghribStartTime, maghribFinishTime,
+            ishaStartTime, ishaFinishTime, jummahStartTime, jummahFinishTime;
+    private EditText startTimeEditText1, finishTimeEditText1;
+    private EditText startTimeEditText2, finishTimeEditText2;
+    private EditText startTimeEditText3, finishTimeEditText3;
+    private EditText startTimeEditText4, finishTimeEditText4;
+    private EditText startTimeEditText5, finishTimeEditText5;
+    private EditText startTimeEditText6, finishTimeEditText6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_namaj);
 
+        startTimeEditText1 = findViewById(R.id.startTimeEditText1);
+        finishTimeEditText1 = findViewById(R.id.finishTimeEditText1);
+
+        startTimeEditText2 = findViewById(R.id.startTimeEditText2);
+        finishTimeEditText2 = findViewById(R.id.finishTimeEditText2);
+
+        startTimeEditText3 = findViewById(R.id.startTimeEditText3);
+        finishTimeEditText3 = findViewById(R.id.finishTimeEditText3);
+
+        startTimeEditText4 = findViewById(R.id.startTimeEditText4);
+        finishTimeEditText4 = findViewById(R.id.finishTimeEditText4);
+
+        startTimeEditText5 = findViewById(R.id.startTimeEditText5);
+        finishTimeEditText5 = findViewById(R.id.finishTimeEditText5);
+
+        startTimeEditText6 = findViewById(R.id.startTimeEditText6);
+        finishTimeEditText6 = findViewById(R.id.finishTimeEditText6);
+
         namajPreferences = getSharedPreferences("NamajPreferences", MODE_PRIVATE);
 
-        for (int i = 1; i <= NUMBER_OF_CARDS; i++) {
-            setupEditCard(i);
-        }
+        // Setup edit cards for each namaj
+        setupEditCard("Fajr", R.id.editCard1, R.id.startTimeEditText1, R.id.finishTimeEditText1, R.id.titleTextView1, R.id.shareButton1);
+        setupEditCard("Dhuhr", R.id.editCard2, R.id.startTimeEditText2, R.id.finishTimeEditText2, R.id.titleTextView2, R.id.shareButton2);
+        setupEditCard("Asr", R.id.editCard3, R.id.startTimeEditText3, R.id.finishTimeEditText3, R.id.titleTextView3, R.id.shareButton3);
+        setupEditCard("Maghrib", R.id.editCard4, R.id.startTimeEditText4, R.id.finishTimeEditText4, R.id.titleTextView4, R.id.shareButton4);
+        setupEditCard("Isha", R.id.editCard5, R.id.startTimeEditText5, R.id.finishTimeEditText5, R.id.titleTextView5, R.id.shareButton5);
+        setupEditCard("Jummah", R.id.editCard6, R.id.startTimeEditText6, R.id.finishTimeEditText6, R.id.titleTextView6, R.id.shareButton6);
 
         Button saveButton = findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -44,19 +72,32 @@ public class EditNamajActivity extends AppCompatActivity {
         });
     }
 
-    private void setupEditCard(final int cardNumber) {
-        String keyStartTime = "startTime_" + cardNumber;
-        String keyFinishTime = "finishTime_" + cardNumber;
-
-        int cardLayoutId = getResources().getIdentifier("editCard" + cardNumber, "id", getPackageName());
+    // Method to setup each edit card
+    // Method to setup each edit card
+    private void setupEditCard(final String namajTitle, int cardLayoutId, int startTimeEditTextId,
+                               int finishTimeEditTextId, int titleTextViewId, int shareButtonId) {
         RelativeLayout cardView = findViewById(cardLayoutId);
+        final EditText startTimeEditText = cardView.findViewById(startTimeEditTextId);
+        final EditText finishTimeEditText = cardView.findViewById(finishTimeEditTextId);
+        final Button shareButton = cardView.findViewById(shareButtonId);
+        final TextView titleTextView = cardView.findViewById(titleTextViewId);
 
-        final EditText startTimeEditText = cardView.findViewById(R.id.startTimeEditText);
-        final EditText finishTimeEditText = cardView.findViewById(R.id.finishTimeEditText);
-        final Button shareButton = cardView.findViewById(getResources().getIdentifier("shareButton" + cardNumber, "id", getPackageName()));
-        TextView titleTextView = cardView.findViewById(getResources().getIdentifier("titleTextView" + cardNumber, "id", getPackageName()));
+        titleTextView.setText(namajTitle);
 
-        titleTextView.setText(getPrayerName(cardNumber));
+        // Retrieve existing data and populate EditText fields
+        String startTimeKey = "startTime_" + namajTitle;
+        String finishTimeKey = "finishTime_" + namajTitle;
+        String startTime = namajPreferences.getString(startTimeKey, "");
+        String finishTime = namajPreferences.getString(finishTimeKey, "");
+        startTimeEditText.setText(startTime);
+        finishTimeEditText.setText(finishTime);
+
+        // Set up share button visibility based on data existence in shared preferences
+        if (!startTime.isEmpty() && !finishTime.isEmpty()) {
+            shareButton.setVisibility(View.VISIBLE);
+        } else {
+            shareButton.setVisibility(View.INVISIBLE);
+        }
 
         startTimeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,52 +113,53 @@ public class EditNamajActivity extends AppCompatActivity {
             }
         });
 
-        String keyPrayerName = "prayerName_" + cardNumber;
-        boolean startTimeExists = namajPreferences.contains(keyStartTime);
-        boolean finishTimeExists = namajPreferences.contains(keyFinishTime);
-
-        if (startTimeExists && finishTimeExists) {
-            shareButton.setVisibility(View.VISIBLE);
-        } else {
-            shareButton.setVisibility(View.INVISIBLE);
-        }
-
+        // Set up click listeners for share buttons
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle share button click
-                // For example, you can implement sharing functionality here
+                // Implement share functionality here
             }
         });
-
-        String startTime = namajPreferences.getString(keyStartTime, "");
-        String finishTime = namajPreferences.getString(keyFinishTime, "");
-
-        startTimeEditText.setText(startTime);
-        finishTimeEditText.setText(finishTime);
     }
 
+    // Method to save data for each namaj
     private void saveData() {
         SharedPreferences.Editor editor = namajPreferences.edit();
-
-        for (int i = 1; i <= NUMBER_OF_CARDS; i++) {
-            int cardLayoutId = getResources().getIdentifier("editCard" + i, "id", getPackageName());
-            RelativeLayout cardView = findViewById(cardLayoutId);
-
-            EditText startTimeEditText = cardView.findViewById(R.id.startTimeEditText);
-            EditText finishTimeEditText = cardView.findViewById(R.id.finishTimeEditText);
-            TextView titleTextView = cardView.findViewById(getResources().getIdentifier("titleTextView" + i, "id", getPackageName()));
-
-            String keyPrayerName = "prayerName_" + i;
-
-            editor.putString(keyPrayerName, titleTextView.getText().toString());
-            editor.putString("startTime_" + keyPrayerName, startTimeEditText.getText().toString());
-            editor.putString("finishTime_" + keyPrayerName, finishTimeEditText.getText().toString());
-        }
+        fajrStartTime = startTimeEditText1.getText().toString();
+        fajrFinishTime = finishTimeEditText1.getText().toString();
+        editor.putString("Fajr", fajrTitle);
+        editor.putString("startTime_Fajr", fajrStartTime);
+        editor.putString("finishTime_Fajr", fajrFinishTime);
+        dhuhrStartTime = startTimeEditText2.getText().toString();
+        dhuhrFinishTime = finishTimeEditText2.getText().toString();
+        editor.putString("Dhuhr", dhuhrTitle);
+        editor.putString("startTime_Dhuhr", dhuhrStartTime);
+        editor.putString("finishTime_Dhuhr", dhuhrFinishTime);
+        asrStartTime = startTimeEditText3.getText().toString();
+        asrFinishTime = finishTimeEditText3.getText().toString();
+        editor.putString("Asr", asrTitle);
+        editor.putString("startTime_Asr", asrStartTime);
+        editor.putString("finishTime_Asr", asrFinishTime);
+        maghribStartTime = startTimeEditText4.getText().toString();
+        maghribFinishTime = finishTimeEditText4.getText().toString();
+        editor.putString("Maghrib", maghribTitle);
+        editor.putString("startTime_Maghrib", maghribStartTime);
+        editor.putString("finishTime_Maghrib", maghribFinishTime);
+        ishaStartTime = startTimeEditText5.getText().toString();
+        ishaFinishTime = finishTimeEditText5.getText().toString();
+        editor.putString("Isha", ishaTitle);
+        editor.putString("startTime_Isha", ishaStartTime);
+        editor.putString("finishTime_Isha", ishaFinishTime);
+        jummahStartTime = startTimeEditText6.getText().toString();
+        jummahFinishTime = finishTimeEditText6.getText().toString();
+        editor.putString("Jummah", jummahTitle);
+        editor.putString("startTime_Jummah", jummahStartTime);
+        editor.putString("finishTime_Jummah", jummahFinishTime);
 
         editor.apply();
     }
 
+    // Method to show time picker dialog
     private void showTimePickerDialog(final EditText editText) {
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -128,7 +170,6 @@ public class EditNamajActivity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        // Format the selected time and set it to the EditText
                         String formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
                         editText.setText(formattedTime);
                     }
@@ -139,24 +180,5 @@ public class EditNamajActivity extends AppCompatActivity {
         );
 
         timePickerDialog.show();
-    }
-
-    private String getPrayerName(int cardNumber) {
-        switch (cardNumber) {
-            case 1:
-                return "Fajr";
-            case 2:
-                return "Dhuhr";
-            case 3:
-                return "Asr";
-            case 4:
-                return "Maghrib";
-            case 5:
-                return "Isha";
-            case 6:
-                return "Jummah";
-            default:
-                return "";
-        }
     }
 }
