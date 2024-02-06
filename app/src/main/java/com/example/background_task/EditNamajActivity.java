@@ -3,9 +3,11 @@ package com.example.background_task;
 import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -47,10 +49,11 @@ public class EditNamajActivity extends AppCompatActivity {
         String keyFinishTime = "finishTime_" + cardNumber;
 
         int cardLayoutId = getResources().getIdentifier("editCard" + cardNumber, "id", getPackageName());
-        View cardView = findViewById(cardLayoutId);
+        RelativeLayout cardView = findViewById(cardLayoutId);
 
         final EditText startTimeEditText = cardView.findViewById(R.id.startTimeEditText);
         final EditText finishTimeEditText = cardView.findViewById(R.id.finishTimeEditText);
+        final Button shareButton = cardView.findViewById(getResources().getIdentifier("shareButton" + cardNumber, "id", getPackageName()));
         TextView titleTextView = cardView.findViewById(getResources().getIdentifier("titleTextView" + cardNumber, "id", getPackageName()));
 
         titleTextView.setText(getPrayerName(cardNumber));
@@ -69,6 +72,24 @@ public class EditNamajActivity extends AppCompatActivity {
             }
         });
 
+        String keyPrayerName = "prayerName_" + cardNumber;
+        boolean startTimeExists = namajPreferences.contains(keyStartTime);
+        boolean finishTimeExists = namajPreferences.contains(keyFinishTime);
+
+        if (startTimeExists && finishTimeExists) {
+            shareButton.setVisibility(View.VISIBLE);
+        } else {
+            shareButton.setVisibility(View.INVISIBLE);
+        }
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle share button click
+                // For example, you can implement sharing functionality here
+            }
+        });
+
         String startTime = namajPreferences.getString(keyStartTime, "");
         String finishTime = namajPreferences.getString(keyFinishTime, "");
 
@@ -81,19 +102,17 @@ public class EditNamajActivity extends AppCompatActivity {
 
         for (int i = 1; i <= NUMBER_OF_CARDS; i++) {
             int cardLayoutId = getResources().getIdentifier("editCard" + i, "id", getPackageName());
-            View cardView = findViewById(cardLayoutId);
+            RelativeLayout cardView = findViewById(cardLayoutId);
 
             EditText startTimeEditText = cardView.findViewById(R.id.startTimeEditText);
             EditText finishTimeEditText = cardView.findViewById(R.id.finishTimeEditText);
             TextView titleTextView = cardView.findViewById(getResources().getIdentifier("titleTextView" + i, "id", getPackageName()));
 
-            String keyStartTime = "startTime_" + i;
-            String keyFinishTime = "finishTime_" + i;
             String keyPrayerName = "prayerName_" + i;
 
-            editor.putString(keyStartTime, startTimeEditText.getText().toString());
-            editor.putString(keyFinishTime, finishTimeEditText.getText().toString());
             editor.putString(keyPrayerName, titleTextView.getText().toString());
+            editor.putString("startTime_" + keyPrayerName, startTimeEditText.getText().toString());
+            editor.putString("finishTime_" + keyPrayerName, finishTimeEditText.getText().toString());
         }
 
         editor.apply();

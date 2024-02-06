@@ -19,7 +19,7 @@ public class ForegroundService extends Service {
     private static final String TAG = ForegroundService.class.getName();
     public static final String CHANNEL_ID = "ForegroundServiceChannel";
     private static final long DELAYED_TIME = 1000;
-    private static final long INTERVAL = 30 * 1000; // 2 minutes in milliseconds
+    private static final long INTERVAL = 1 * 1000; // 2 minutes in milliseconds
 
     int counter = 0;
 
@@ -40,7 +40,7 @@ public class ForegroundService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
         } else {
-            pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+            pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
         }
 
         final NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID)

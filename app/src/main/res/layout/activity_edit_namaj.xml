@@ -32,18 +32,36 @@
             >
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Fajr"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Fajr"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton1"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <!-- Edit Card 2 -->
@@ -56,18 +74,37 @@
             android:background="@drawable/card_background">
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView2"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Dhuhr"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Dhuhr"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton2"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+
         </RelativeLayout>
 
         <!-- Edit Card 3 -->
@@ -80,18 +117,35 @@
             android:background="@drawable/card_background">
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView3"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Asr"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Asr"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton3"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <!-- Edit Card 4 -->
@@ -104,18 +158,37 @@
             android:background="@drawable/card_background">
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView4"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Maghrib"
-                android:textColor="#000"
-                                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Maghrib"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton4"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <!-- Edit Card 5 -->
@@ -128,18 +201,36 @@
             android:background="@drawable/card_background">
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView5"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Isha"
-                android:textColor="#000"
-                                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Isha"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton5"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <!-- Edit Card 6 -->
@@ -152,18 +243,36 @@
             android:background="@drawable/card_background">
 
             <include layout="@layout/edit_card_layout" />
-            <TextView
-                android:id="@+id/titleTextView6"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@id/finishTimeEditText"
-                android:text="Jummah"
-                android:textColor="#000"
-                                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="12dp"
-/>
+
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/titleTextView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="Jummah"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="12dp"
+                    android:padding="8dp"
+                    android:textStyle="bold" />"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Share"
+                    android:id="@+id/shareButton6"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
         </RelativeLayout>
 
         <Button
