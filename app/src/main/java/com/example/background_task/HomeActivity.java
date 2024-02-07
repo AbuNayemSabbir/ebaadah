@@ -1,9 +1,11 @@
 package com.example.background_task;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private LinearLayout namajLayout;
     private SharedPreferences namajPreferences;
+    private Button editNamajButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +23,28 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         namajLayout = findViewById(R.id.namajLayout);
+        editNamajButton = findViewById(R.id.editNamajButton);
         namajPreferences = getSharedPreferences("NamajPreferences", MODE_PRIVATE);
 
         displayNamajCards();
-    }
 
+        editNamajButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCardActivity();
+            }
+        });
+
+    }
+    public void goToCardActivity() {
+        Intent intent = new Intent(this, EditNamajActivity.class);
+        startActivity(intent);
+    }
     private void displayNamajCards() {
         LayoutInflater inflater = LayoutInflater.from(this);
 
         // List of namaj titles
-        String[] namajTitles = {"Fajr", "Dhuhr", "Asr", "Maghrib", "Isha", "Jummah"};
+        String[] namajTitles = {"ফজর", "যোহর", "আসর", "মাগরিব", "এশা", "জুমা"};
 
         for (String namajTitle : namajTitles) {
             String startTimeKey = "startTime_" + namajTitle;
@@ -48,11 +63,11 @@ public class HomeActivity extends AppCompatActivity {
 
                 // Set start time
                 TextView startTimeTextView = namajCard.findViewById(R.id.startTimeTextView);
-                startTimeTextView.setText("Start Time: " + startTime);
+                startTimeTextView.setText(startTime);
 
                 // Set finish time
                 TextView finishTimeTextView = namajCard.findViewById(R.id.finishTimeTextView);
-                finishTimeTextView.setText("Finish Time: " + finishTime);
+                finishTimeTextView.setText(" -  " + finishTime);
 
                 // Add the namaj card to the layout
                 namajLayout.addView(namajCard);

@@ -9,16 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F5F5F5"
-
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/appBarImages"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:background="@drawable/bg"
             android:paddingLeft="16dp"
-            android:paddingTop="16dp"
             android:paddingRight="16dp">
 
         </ImageView>
@@ -45,12 +43,10 @@
                     android:id="@+id/titleTextView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Fajr"
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/fajr"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -59,8 +55,11 @@
                     android:id="@+id/shareButton1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
+
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -82,7 +81,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -98,7 +97,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -134,11 +133,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Dhuhr"
+
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/dhuhr"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -147,8 +146,10 @@
                     android:id="@+id/shareButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -170,7 +171,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -186,7 +187,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -222,11 +223,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Asr"
+
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/asr"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -235,8 +236,11 @@
                     android:id="@+id/shareButton3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
+
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -258,7 +262,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -274,7 +278,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -308,11 +312,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Maghrib"
+
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/maghrib"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -322,8 +326,11 @@
                     android:id="@+id/shareButton4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
+
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -345,7 +352,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -361,7 +368,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -396,11 +403,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Isha"
+
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/isha"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -409,8 +416,11 @@
                     android:id="@+id/shareButton5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
+
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -432,7 +442,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -448,7 +458,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -483,12 +493,12 @@
                     android:id="@+id/titleTextView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingLeft="12dp"
-                    android:text="Jummah"
+
+
+                    android:layout_weight="2"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/jummah"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />"
@@ -497,8 +507,11 @@
                     android:id="@+id/shareButton6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:text="Share"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/ShareButton"
+
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -520,7 +533,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Start Time"
+                    android:hint="@string/enter_start_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -536,7 +549,7 @@
                     android:background="@drawable/edit_text_background"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Enter Finish Time"
+                    android:hint="@string/enter_finish_time"
                     android:inputType="none"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -555,7 +568,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_button"
-            android:text="Save Namaj Time" />
+            android:text="@string/EditTimeSaveButtonName" />
 
     </RelativeLayout>
 </ScrollView>

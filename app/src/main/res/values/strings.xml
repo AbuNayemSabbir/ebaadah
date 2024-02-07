@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Ebaadah</string>
+    <string name="EditPage">সসময়সূচী নির্বাচন করুন</string>
+    <string name="ShareButton">সেবাটি বন্ধ করতে ট্যাপ করুন</string>
+    <string name="EditTimeSaveButtonName">নির্বাচিত সেবা সক্রিয় করুন</string>
+    <string name="fajr">ফজর</string>
+    <string name="dhuhr">যোহর</string>
+    <string name="asr">আসর</string>
+    <string name="maghrib">মাগরিব</string>
+    <string name="isha">এশা</string>
+    <string name="jummah">জুমা</string>
+    <string name="enter_start_time">শুরুর সময় লিখুন</string>
+    <string name="enter_finish_time">শেষ সময় লিখুন</string>
+    <string name="edit_namaj_time">সময়সূচী পুনঃনির্বাচন করুন</string>
 </resources>
