@@ -9,9 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F5F5F5"
+        android:layout_marginTop="16dp"
         android:padding="16dp">
 
-        <ImageView
+     <!--   <ImageView
             android:id="@+id/appBarImages"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -19,13 +20,12 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
-        </ImageView>
+        </ImageView>-->
         <!-- Edit Card 1 -->
         <RelativeLayout
             android:id="@+id/editCard1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appBarImages"
 
             android:background="@drawable/card_background">
 
@@ -43,7 +43,7 @@
                     android:id="@+id/titleTextView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/fajr"
@@ -51,6 +51,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
+<!--
                 <Button
                     android:id="@+id/shareButton1"
                     android:layout_width="match_parent"
@@ -61,6 +62,7 @@
                     android:text="@string/ShareButton"
 
                     android:visibility="invisible" />
+-->
             </LinearLayout>
 
             <LinearLayout
@@ -134,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
 
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/dhuhr"
@@ -142,7 +144,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
-                <Button
+            <!--    <Button
                     android:id="@+id/shareButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,7 +152,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/custom_button"
                     android:text="@string/ShareButton"
-                    android:visibility="invisible" />
+                    android:visibility="invisible" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -224,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
 
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/asr"
@@ -232,6 +234,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
+<!--
                 <Button
                     android:id="@+id/shareButton3"
                     android:layout_width="match_parent"
@@ -242,6 +245,7 @@
                     android:text="@string/ShareButton"
 
                     android:visibility="invisible" />
+-->
             </LinearLayout>
 
             <LinearLayout
@@ -313,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
 
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/maghrib"
@@ -321,6 +325,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
+<!--
                 <Button
 
                     android:id="@+id/shareButton4"
@@ -332,6 +337,7 @@
                     android:text="@string/ShareButton"
 
                     android:visibility="invisible" />
+-->
             </LinearLayout>
 
             <LinearLayout
@@ -404,7 +410,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
 
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/isha"
@@ -412,6 +418,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
+<!--
                 <Button
                     android:id="@+id/shareButton5"
                     android:layout_width="match_parent"
@@ -422,6 +429,7 @@
                     android:text="@string/ShareButton"
 
                     android:visibility="invisible" />
+-->
             </LinearLayout>
 
             <LinearLayout
@@ -495,7 +503,7 @@
                     android:layout_height="wrap_content"
 
 
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="8dp"
                     android:text="@string/jummah"
@@ -503,6 +511,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />"
 
+<!--
                 <Button
                     android:id="@+id/shareButton6"
                     android:layout_width="match_parent"
@@ -513,6 +522,7 @@
                     android:text="@string/ShareButton"
 
                     android:visibility="invisible" />
+-->
             </LinearLayout>
 
             <LinearLayout

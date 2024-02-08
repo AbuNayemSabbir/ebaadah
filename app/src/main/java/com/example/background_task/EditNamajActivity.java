@@ -57,12 +57,12 @@ public class EditNamajActivity extends AppCompatActivity {
         namajPreferences = getSharedPreferences("NamajPreferences", MODE_PRIVATE);
 
         // Setup edit cards for each namaj
-        setupEditCard("ফজর", R.id.editCard1, R.id.startTimeEditText1, R.id.finishTimeEditText1, R.id.titleTextView1, R.id.shareButton1);
-        setupEditCard("যোহর", R.id.editCard2, R.id.startTimeEditText2, R.id.finishTimeEditText2, R.id.titleTextView2, R.id.shareButton2);
-        setupEditCard("আসর", R.id.editCard3, R.id.startTimeEditText3, R.id.finishTimeEditText3, R.id.titleTextView3, R.id.shareButton3);
-        setupEditCard("মাগরিব", R.id.editCard4, R.id.startTimeEditText4, R.id.finishTimeEditText4, R.id.titleTextView4, R.id.shareButton4);
-        setupEditCard("এশা", R.id.editCard5, R.id.startTimeEditText5, R.id.finishTimeEditText5, R.id.titleTextView5, R.id.shareButton5);
-        setupEditCard("জুমা", R.id.editCard6, R.id.startTimeEditText6, R.id.finishTimeEditText6, R.id.titleTextView6, R.id.shareButton6);
+        setupEditCard("ফজর", R.id.editCard1, R.id.startTimeEditText1, R.id.finishTimeEditText1, R.id.titleTextView1/*, R.id.shareButton1*/);
+        setupEditCard("যোহর", R.id.editCard2, R.id.startTimeEditText2, R.id.finishTimeEditText2, R.id.titleTextView2/*, R.id.shareButton2*/);
+        setupEditCard("আসর", R.id.editCard3, R.id.startTimeEditText3, R.id.finishTimeEditText3, R.id.titleTextView3/*, R.id.shareButton3*/);
+        setupEditCard("মাগরিব", R.id.editCard4, R.id.startTimeEditText4, R.id.finishTimeEditText4, R.id.titleTextView4/*, R.id.shareButton4*/);
+        setupEditCard("এশা", R.id.editCard5, R.id.startTimeEditText5, R.id.finishTimeEditText5, R.id.titleTextView5/*, R.id.shareButton5*/);
+        setupEditCard("জুমা", R.id.editCard6, R.id.startTimeEditText6, R.id.finishTimeEditText6, R.id.titleTextView6/*, R.id.shareButton6*/);
 
         Button saveButton = findViewById(R.id.saveButton);
 
@@ -106,11 +106,13 @@ public class EditNamajActivity extends AppCompatActivity {
     // Method to setup each edit card
     // Method to setup each edit card
     private void setupEditCard(final String namajTitle, int cardLayoutId, int startTimeEditTextId,
-                               int finishTimeEditTextId, int titleTextViewId, int shareButtonId) {
+                               int finishTimeEditTextId, int titleTextViewId/*, int shareButtonId*/) {
         RelativeLayout cardView = findViewById(cardLayoutId);
         final EditText startTimeEditText = cardView.findViewById(startTimeEditTextId);
         final EditText finishTimeEditText = cardView.findViewById(finishTimeEditTextId);
+/*
         final Button shareButton = cardView.findViewById(shareButtonId);
+*/
         final TextView titleTextView = cardView.findViewById(titleTextViewId);
 
         titleTextView.setText(namajTitle);
@@ -123,12 +125,12 @@ public class EditNamajActivity extends AppCompatActivity {
         startTimeEditText.setText(startTime);
         finishTimeEditText.setText(finishTime);
 
-        // Set up share button visibility based on data existence in shared preferences
+       /* // Set up share button visibility based on data existence in shared preferences
         if (!startTime.isEmpty() && !finishTime.isEmpty()) {
             shareButton.setVisibility(View.VISIBLE);
         } else {
             shareButton.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
         startTimeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,12 +147,12 @@ public class EditNamajActivity extends AppCompatActivity {
         });
 
         // Set up click listeners for share buttons
-        shareButton.setOnClickListener(new View.OnClickListener() {
+   /*     shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Implement share functionality here
             }
-        });
+        });*/
     }
 
     // Method to save data for each namaj

@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:padding="16dp"
     tools:context=".HomeActivity">
-
-
-    <ImageView
-        android:id="@+id/appBarImages"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/namajLayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:background="@drawable/bg"
-        >
-    </ImageView>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:id="@+id/rl1"
-        android:layout_below="@+id/appBarImages"
-
-        android:layout_height="wrap_content">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <LinearLayout
-                android:id="@+id/namajLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:visibility="invisible"
-                android:orientation="vertical">
-                <!-- Cards will be dynamically added here -->
-            </LinearLayout>
-
-        </ScrollView>
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- Cards will be dynamically added here -->
+    </LinearLayout>
     <Button
-        android:id="@+id/editNamajButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/stopServices"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/custom_button"
-        android:layout_below="@+id/rl1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="onEditNamajButtonClick"
-        android:text="@string/edit_namaj_time" />
-    <TextView
-        android:layout_width="wrap_content"
+        android:text="@string/stopServices" />
+    <Button
+        android:id="@+id/startServices"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:padding="16dp"
-        android:layout_alignParentBottom="true"
-        android:textStyle="italic"
-        android:text="Dedicated to: Syed Asif Arafat Sadeque."
-        android:textColor="@color/black" />
-</RelativeLayout>
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/startServices" />
+    <Button
+        android:id="@+id/editNamajButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/edit_namaj_time" />
+</LinearLayout>
+
+</ScrollView>

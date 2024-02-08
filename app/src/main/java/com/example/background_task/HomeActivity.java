@@ -16,6 +16,8 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout namajLayout;
     private SharedPreferences namajPreferences;
     private Button editNamajButton;
+    private Button stopServicesButton;
+    private Button startServicesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
 
         namajLayout = findViewById(R.id.namajLayout);
         editNamajButton = findViewById(R.id.editNamajButton);
+        startServicesButton = findViewById(R.id.startServices);
+        stopServicesButton = findViewById(R.id.stopServices);
         namajPreferences = getSharedPreferences("NamajPreferences", MODE_PRIVATE);
 
         displayNamajCards();
@@ -34,10 +38,26 @@ public class HomeActivity extends AppCompatActivity {
                 goToCardActivity();
             }
         });
+        startServicesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        stopServicesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
     }
     public void goToCardActivity() {
         Intent intent = new Intent(this, EditNamajActivity.class);
+        startActivity(intent);
+    }
+    public void refresh() {
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
     private void displayNamajCards() {
@@ -69,12 +89,38 @@ public class HomeActivity extends AppCompatActivity {
                 TextView finishTimeTextView = namajCard.findViewById(R.id.finishTimeTextView);
                 finishTimeTextView.setText(" -  " + finishTime);
 
-                // Add the namaj card to the layout
+                Button closeButton = namajCard.findViewById(R.id.close);
+
+// Set tag for the close button to the namaj title
+                closeButton.setTag(namajTitle);
                 namajLayout.addView(namajCard);
                 namajLayout.setVisibility(View.VISIBLE);
+// Set click listener for the close button
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Retrieve the namaj title from the tag
+                        String namajTitleToDelete = (String) v.getTag();
+
+                        deleteNamajPreferences(namajTitleToDelete);
+
+                        refresh();
+
+
+                    }
+                });
+                // Add the namaj card to the layout
+
 
             }
 
         }
+    }
+    private void deleteNamajPreferences(String namajTitle) {
+        // Delete SharedPreferences values associated with the given namaj title
+        SharedPreferences.Editor editor = namajPreferences.edit();
+        editor.remove("startTime_" + namajTitle);
+        editor.remove("finishTime_" + namajTitle);
+        editor.apply();
     }
 }
