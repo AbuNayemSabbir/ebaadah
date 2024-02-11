@@ -41,12 +41,13 @@ public class HomeActivity extends AppCompatActivity {
         startServicesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startForegroundService();
             }
         });
         stopServicesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stopForegroundService();
             }
         });
 
@@ -55,6 +56,15 @@ public class HomeActivity extends AppCompatActivity {
     public void goToCardActivity() {
         Intent intent = new Intent(this, EditNamajActivity.class);
         startActivity(intent);
+    }
+    private void startForegroundService() {
+        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        startService(serviceIntent);
+    }
+
+    private void stopForegroundService() {
+        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        stopService(serviceIntent);
     }
     public void refresh() {
         Intent intent = new Intent(this, HomeActivity.class);

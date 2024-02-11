@@ -72,6 +72,7 @@ public class EditNamajActivity extends AppCompatActivity {
                 saveData();
                 Toast.makeText(EditNamajActivity.this, "Data Saved!", Toast.LENGTH_SHORT).show();
                 goToHomeActivity();
+                startForegroundService();
                // startService();
             }
         });
@@ -89,15 +90,9 @@ public class EditNamajActivity extends AppCompatActivity {
             }
         });*/
     }
-    public void startService() {
-        Intent serviceIntent = new Intent(this, ForegroundService.class);
-        serviceIntent.putExtra("inputExtra", "Foreground Service Example in Android");
-        ContextCompat.startForegroundService(this, serviceIntent);
-    }
-
-    public void stopService() {
-        Intent serviceIntent = new Intent(this, ForegroundService.class);
-        stopService(serviceIntent);
+    private void startForegroundService() {
+        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        startService(serviceIntent);
     }
     public void goToHomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
