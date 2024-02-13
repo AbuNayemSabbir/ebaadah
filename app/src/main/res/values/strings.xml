@@ -12,7 +12,7 @@
     <string name="enter_start_time">শুরুর সময় লিখুন</string>
     <string name="enter_finish_time">শেষ সময় লিখুন</string>
     <string name="edit_namaj_time">সময়সূচী পুনঃনির্বাচন করুন</string>
-    <string name="fotter">Dedicated to: Syed Asif Arafat Sadeque.\nIf any query : 01976 - 890-890</string>
+    <string name="fotter">If any query : 01975- 890-890\nDedicated to: Syed Asif Arafat Sadeque.</string>
     <string name="stopServices">সেবাটি আপাতত বন্ধ রাখুন</string>
     <string name="startServices">সেবাটি পুনরায় সচল করুন</string>
 </resources>

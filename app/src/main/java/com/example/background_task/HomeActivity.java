@@ -58,12 +58,14 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void startForegroundService() {
-        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        Intent serviceIntent = new Intent(this, PrayerForegroundService.class);
+        stopService(serviceIntent);
+
         startService(serviceIntent);
     }
 
     private void stopForegroundService() {
-        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        Intent serviceIntent = new Intent(this, PrayerForegroundService.class);
         stopService(serviceIntent);
     }
     public void refresh() {

@@ -91,7 +91,7 @@ public class EditNamajActivity extends AppCompatActivity {
         });*/
     }
     private void startForegroundService() {
-        Intent serviceIntent = new Intent(this, PrayerTimeCheckerReceiver.class);
+        Intent serviceIntent = new Intent(this, PrayerForegroundService.class);
         startService(serviceIntent);
     }
     public void goToHomeActivity() {
